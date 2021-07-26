@@ -1,8 +1,8 @@
 {
-  "extends": "@sales-analysis/sa-frontend-configs/tsconfig",
+  "extends": "@sales-analysis/sa-frontend-configs/tsconfig.json",
   "shouldExtractLiteralValuesFromEnum": true,
   "compilerOptions": {
-    "baseUrl": "src"
+    "baseUrl": "src",
   },
   "include": ["src"],
   "exclude": ["node_modules", "**/dist/**/*"],
