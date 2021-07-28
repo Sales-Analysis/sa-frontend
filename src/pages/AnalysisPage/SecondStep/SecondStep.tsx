@@ -1,7 +1,7 @@
 import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import { Text } from '@consta/uikit/Text';
-import { AnalysisStep } from 'components/AnalysisStep';
+import { Step } from '../Step';
 
 import styles from '../FirstStep/FirstStep.module.css';
 
@@ -16,8 +16,8 @@ export const SecondStep: React.FC = () => {
   const {formatMessage} = useIntl();
 
   return (
-    <AnalysisStep className={styles.root}>
+    <Step className={styles.root}>
       <Text size={'2xl'}>{formatMessage(messages.title)}</Text>
-    </AnalysisStep>
+    </Step>
   );
 };

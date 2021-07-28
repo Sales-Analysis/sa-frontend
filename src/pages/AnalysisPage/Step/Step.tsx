@@ -7,7 +7,7 @@ interface IProps {
   className?: string;
 }
 
-export const AnalysisStep: React.FC<PropsWithChildren<IProps>> = ({
+export const Step: React.FC<PropsWithChildren<IProps>> = ({
   children,
   className,
 }) => {

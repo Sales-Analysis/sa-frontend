@@ -2,7 +2,7 @@ import React, { PropsWithChildren, ReactNode } from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import { Link } from 'react-router-dom';
 import { Text } from '@consta/uikit/Text';
-import { AnalysisStep } from 'components/AnalysisStep';
+import { Step } from '../Step';
 
 import styles from './FirstStep.module.css';
 
@@ -27,12 +27,12 @@ export const FirstStep: React.FC<PropsWithChildren<ReactNode>> = ({children}) =>
   const {formatMessage} = useIntl();
 
   return (
-    <AnalysisStep className={styles.root}>
+    <Step className={styles.root}>
       <Text size={'2xl'}>{formatMessage(messages.title)}</Text>
       <Text view={'ghost'}>{formatMessage(messages.description, {
         url: <Link to={'/'}>{formatMessage(messages.example)}</Link>
       })}</Text>
       {children}
-    </AnalysisStep>
+    </Step>
   );
 };
