@@ -12,10 +12,7 @@ const messages = defineMessages({
   },
 });
 
-interface IProps {
-}
-
-export const SecondStep: React.FC<IProps> = () => {
+export const SecondStep: React.FC = () => {
   const {formatMessage} = useIntl();
 
   return (

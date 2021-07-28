@@ -1,17 +1,21 @@
 import React, { PropsWithChildren, ReactNode, useEffect, useState } from 'react';
 import { IntlProvider } from 'react-intl';
 import { Loader } from '@consta/uikit/Loader';
+import { MessageFormatElement } from '@formatjs/icu-messageformat-parser';
 
-async function loadLocaleData(locale: string) {
+async function loadLocaleData(locale: string): Promise<Record<string, MessageFormatElement[]>> {
   switch (locale) {
     default:
-      return import('lang/ru-RU.json');
+      // TODO: fix it in the feature by lang changing implemented
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      return import('lang/ru.json');
   }
 }
 
 export const LanguageProvider = React.memo<PropsWithChildren<ReactNode>>(function LocaleProvider({children}) {
   const locale = navigator.language;
-  const [messages, setMessages] = useState<Record<string, any> | null>(null);
+  const [messages, setMessages] = useState<Record<string, MessageFormatElement[]> | null>(null);
 
   useEffect(() => {
     async function loadTranslations() {

@@ -14,10 +14,7 @@ const messages = defineMessages({
   }
 });
 
-interface IProps {
-}
-
-export const AnalysisPage: React.FC<IProps> = () => {
+export const AnalysisPage: React.FC = () => {
   const [files, setFiles] = React.useState<File[]>([]);
   const {formatMessage} = useIntl();
 
