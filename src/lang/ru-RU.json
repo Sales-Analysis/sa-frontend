@@ -1,0 +1,23 @@
+{
+  "pages.analysis.dnd.button": {
+    "defaultMessage": "Выбрать файл"
+  },
+  "pages.analysis.filezone.title": {
+    "defaultMessage": "Загрузите файл простым переносом или нажмите для выбора файла"
+  },
+  "pages.analysis.step.first.description": {
+    "defaultMessage": "Файл для загрузки должен включать в себя категории товаров, в формате xls. и csv. и не превышать 300 Мб. Как должен выглядеть файл для загрузки можно посмотреть в этом {url}"
+  },
+  "pages.analysis.step.first.description.example": {
+    "defaultMessage": "примере"
+  },
+  "pages.analysis.step.first.title": {
+    "defaultMessage": "1. Загрузите файл с данными"
+  },
+  "pages.analysis.step.second.title": {
+    "defaultMessage": "2. Настройте опции"
+  },
+  "pages.analysis.title": {
+    "defaultMessage": "ABC анализ продаж"
+  }
+}

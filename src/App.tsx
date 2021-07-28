@@ -1,4 +1,5 @@
 import React from 'react';
+import { AnalysisPage } from 'pages/AnalysisPage';
 import { Providers } from 'providers/Providers';
 
 import './App.css';
@@ -6,8 +7,7 @@ import './App.css';
 function App(props: any) {
   return (
     <Providers {...props}>
-      <div className="App">
-      </div>
+      <AnalysisPage />
     </Providers>
   );
 }

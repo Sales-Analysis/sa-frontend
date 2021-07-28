@@ -1,10 +1,16 @@
 import React, { PropsWithChildren, ReactNode } from 'react';
-import { LocaleProvider } from './LocaleProvider';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { presetGpnDefault, Theme } from '@consta/uikit/Theme';
+import { LanguageProvider } from './LanguageProvider';
 
 export const Providers: React.FC<PropsWithChildren<ReactNode>> = ({children}) => {
   return (
-    <LocaleProvider>
-      {children}
-    </LocaleProvider>
+    <LanguageProvider>
+      <Theme preset={presetGpnDefault}>
+        <Router>
+          {children}
+        </Router>
+      </Theme>
+    </LanguageProvider>
   );
 };

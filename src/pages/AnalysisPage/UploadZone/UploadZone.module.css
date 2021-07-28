@@ -1,0 +1,8 @@
+.root {
+  padding: var(--space-xl) 0;
+  //background: var(--color-bg-stripe);
+}
+
+.Button {
+  border-radius: 2px;
+}

@@ -5,11 +5,11 @@ import { Loader } from '@consta/uikit/Loader';
 async function loadLocaleData(locale: string) {
   switch (locale) {
     default:
-      return import('lang/compiled/ru-RU.json');
+      return import('lang/ru-RU.json');
   }
 }
 
-export const LocaleProvider = React.memo<PropsWithChildren<ReactNode>>(function LocaleProvider({children}) {
+export const LanguageProvider = React.memo<PropsWithChildren<ReactNode>>(function LocaleProvider({children}) {
   const locale = navigator.language;
   const [messages, setMessages] = useState<Record<string, any> | null>(null);
 
@@ -22,12 +22,10 @@ export const LocaleProvider = React.memo<PropsWithChildren<ReactNode>>(function 
     loadTranslations().finally();
   }, [locale]);
 
-
   return (messages ?
       <IntlProvider
         locale={locale}
         defaultLocale="ru-RU"
-        messages={messages}
       >
         {children}
       </IntlProvider> : <Loader />
