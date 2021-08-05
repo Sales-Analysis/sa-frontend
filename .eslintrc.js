@@ -1,21 +1,28 @@
+const baseConfig = require.resolve('@sales-analysis/sa-frontend-configs/.eslintrc');
+const localePrettierConfig = require('./.prettierrc.js');
+
 module.exports = {
   root: true,
-  extends: [
-    'plugin:@typescript-eslint/recommended',
-    require.resolve('@sales-analysis/sa-frontend-configs/.eslintrc'),
-  ],
-  plugins: ['formatjs', '@typescript-eslint'],
+  extends: [baseConfig],
+  plugins: ['formatjs'],
   rules: {
-    'formatjs/no-offset': 'error'
+    'formatjs/no-offset': 'error',
+    'prettier/prettier': ['error', localePrettierConfig],
   },
-  ignorePatterns: ['/*.*'],
   overrides: [
     {
-      files: ['**/*.{ts,tsx}'],
-      parser: '@typescript-eslint/parser',
-      parserOptions: {
-        project: 'tsconfig.json',
+      files: ['**/*.js'],
+      rules: {
+        '@typescript-eslint/no-var-requires': 'off',
       },
-    }
-  ]
+    },
+  ],
+  parserOptions: {
+    ecmaVersion: 6,
+    sourceType: 'module',
+    project: 'tsconfig.json',
+    ecmaFeatures: {
+      jsx: true,
+    },
+  },
 };

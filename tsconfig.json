@@ -2,8 +2,15 @@
   "extends": "@sales-analysis/sa-frontend-configs/tsconfig",
   "shouldExtractLiteralValuesFromEnum": true,
   "compilerOptions": {
+    "target": "es2017",
     "baseUrl": "src"
   },
-  "include": ["src", ".eslintrc.js"],
+  "include": [
+    "src",
+    "./*.js"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/dist/**/*"
+  ]
 }
-

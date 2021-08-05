@@ -1,0 +1,21 @@
+schema: './src/apollo/*.schema.graphql'
+documents:
+  - './src/**/*.graphql'
+  - '!./src/**/*.schema.graphql'
+generates:
+  ./src/types/structures.ts:
+    plugins:
+      - typescript
+    config:
+      useTypeImports: true
+  ./src/types/operations.ts:
+    plugins:
+      - typescript-operations
+    config:
+      useTypeImports: true
+  ./src/types/apollo.ts:
+    plugins:
+      - typescript-react-apollo
+    config:
+      useTypeImports: true
+

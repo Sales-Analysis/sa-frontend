@@ -1,6 +1,3 @@
 module.exports = {
-  plugins: [
-    require('postcss-nested'),
-    require('autoprefixer')
-  ]
+  plugins: [...require('@sales-analysis/sa-frontend-configs/postcss.config').plugins],
 };
