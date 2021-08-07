@@ -1,0 +1,41 @@
+type Row {
+  id: Int! @fake(type: number)
+  name: String! @fake(type: productName)
+  profit: Float! @fake(type: number)
+  profitPercent: Float! @fake(type: number, options:{ minNumber: 1, maxNumber: 100 })
+  portion: Float! @fake(type: number, options: { minNumber: 1, maxNumber: 100 })
+  group: String! @examples(values: ["A", "B", "C"])
+}
+
+extend type Query {
+  getReports: [Row]! @listLength(min: 10, max: 50)
+}
+
+#"Server schema"
+#
+#type Analysis {
+#  id: Int! @fake(type: number)
+#  name: String! @examples(values: ["ABC", "XYZ", "FMR"])
+#  description: String! @fake(type: lorem)
+#  image: String! @fake(type: imageUrl)
+#  disabled: Boolean! @examples(values: [true, false])
+#}
+#
+#type FAQ {
+#  id: Int!
+#  title: String!
+#  description: String!
+#}
+#
+#type Hiw {
+#  id: Int!
+#  title: String!
+#  description: String!
+#  image: String!
+#}
+#
+#type Query {
+#  ListAnalysis: [Analysis!]!
+#  ListHiw: [Hiw!]!
+#  ListFAQ: [FAQ!]!
+#}

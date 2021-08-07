@@ -1,0 +1,26 @@
+type Query {
+  ListAnalysis: [Analysis!]!
+  ListHiw: [Hiw!]!
+  ListFAQ: [FAQ!]!
+}
+
+type Analysis {
+  id: Int!
+  name: String!
+  description: String!
+  image: String!
+  disabled: Boolean!
+}
+
+type FAQ {
+  id: Int!
+  title: String!
+  description: String!
+}
+
+type Hiw {
+  id: Int!
+  title: String!
+  description: String!
+  image: String!
+}

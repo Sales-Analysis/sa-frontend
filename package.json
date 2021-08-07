@@ -64,6 +64,7 @@
     "@graphql-codegen/typescript": "^2.0.0",
     "@graphql-codegen/typescript-operations": "^2.0.1",
     "@graphql-codegen/typescript-react-apollo": "^3.0.0",
+    "@graphql-eslint/eslint-plugin": "^2.0.1",
     "@graphql-tools/graphql-file-loader": "^7.0.0",
     "@graphql-tools/load": "^7.0.0",
     "@graphql-tools/schema": "^8.0.3",
