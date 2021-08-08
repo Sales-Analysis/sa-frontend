@@ -1,0 +1,8 @@
+.Link {
+  text-decoration: none;
+  padding-right: 80px;
+
+  &:visited, &:hover {
+    color: currentColor;
+  }
+}
