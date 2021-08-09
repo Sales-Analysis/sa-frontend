@@ -10,13 +10,13 @@ import styles from './AnalysisPage.module.css';
 const messages = defineMessages({
   title: {
     id: 'pages.analysis.title',
-    defaultMessage: 'ABC анализ продаж'
-  }
+    defaultMessage: 'ABC анализ продаж',
+  },
 });
 
 export const AnalysisPage: React.FC = () => {
   const [files, setFiles] = React.useState<File[]>([]);
-  const {formatMessage} = useIntl();
+  const { formatMessage } = useIntl();
 
   return (
     <div className={styles.root}>

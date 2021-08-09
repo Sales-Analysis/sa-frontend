@@ -9,29 +9,31 @@ import styles from './FirstStep.module.css';
 const messages = defineMessages({
   title: {
     id: 'pages.analysis.step.first.title',
-    defaultMessage: '1. Загрузите файл с данными'
+    defaultMessage: '1. Загрузите файл с данными',
   },
   description: {
     id: 'pages.analysis.step.first.description',
     defaultMessage: `Файл для загрузки должен включать в себя категории товаров,
     в формате xls. и csv. и не превышать 300 Мб. Как должен выглядеть файл для загрузки
-    можно посмотреть в этом {url}`
+    можно посмотреть в этом {url}`,
   },
   example: {
     id: 'pages.analysis.step.first.description.example',
-    defaultMessage: 'примере'
-  }
+    defaultMessage: 'примере',
+  },
 });
 
-export const FirstStep: React.FC<PropsWithChildren<ReactNode>> = ({children}) => {
-  const {formatMessage} = useIntl();
+export const FirstStep: React.FC<PropsWithChildren<ReactNode>> = ({ children }) => {
+  const { formatMessage } = useIntl();
 
   return (
     <Step className={styles.root}>
       <Text size={'2xl'}>{formatMessage(messages.title)}</Text>
-      <Text view={'ghost'}>{formatMessage(messages.description, {
-        url: <Link to={'/'}>{formatMessage(messages.example)}</Link>
-      })}</Text>
+      <Text view={'ghost'}>
+        {formatMessage(messages.description, {
+          url: <Link to={'/'}>{formatMessage(messages.example)}</Link>,
+        })}
+      </Text>
       {children}
     </Step>
   );

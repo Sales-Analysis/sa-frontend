@@ -10,33 +10,34 @@ import styles from './UploadZone.module.css';
 const messages = defineMessages({
   description: {
     id: 'pages.analysis.filezone.title',
-    defaultMessage: 'Загрузите файл простым переносом или нажмите для выбора файла'
+    defaultMessage: 'Загрузите файл простым переносом или нажмите для выбора файла',
   },
   button: {
     id: 'pages.analysis.dnd.button',
-    defaultMessage: 'Выбрать файл'
+    defaultMessage: 'Выбрать файл',
   },
 });
 
-
 interface IProps {
-  files: File[],
-  onUpload: Dispatch<SetStateAction<File[]>>
+  files: File[];
+  onUpload: Dispatch<SetStateAction<File[]>>;
 }
 
-export const UploadZone: React.FC<IProps> = ({files, onUpload}) => {
-  const {formatMessage} = useIntl();
+export const UploadZone: React.FC<IProps> = ({ files, onUpload }) => {
+  const { formatMessage } = useIntl();
 
   return (
     <div className={styles.root}>
       <DragNDropField onDropFiles={onUpload}>
-        {({openFileDialog}) => (
+        {({ openFileDialog }) => (
           <>
             <Text>{formatMessage(messages.description)}</Text>
-            <Button className={styles.Button}
-                    onClick={openFileDialog}
-                    view={'secondary'}
-                    label={formatMessage(messages.button)}/>
+            <Button
+              className={styles.Button}
+              onClick={openFileDialog}
+              view={'secondary'}
+              label={formatMessage(messages.button)}
+            />
           </>
         )}
       </DragNDropField>

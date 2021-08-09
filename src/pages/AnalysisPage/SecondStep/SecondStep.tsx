@@ -13,7 +13,7 @@ const messages = defineMessages({
 });
 
 export const SecondStep: React.FC = () => {
-  const {formatMessage} = useIntl();
+  const { formatMessage } = useIntl();
 
   return (
     <Step className={styles.root}>
