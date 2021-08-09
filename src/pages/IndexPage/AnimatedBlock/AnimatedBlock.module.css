@@ -1,0 +1,11 @@
+.root {
+  height: 100vh;
+  background: linear-gradient(130deg, rgba(40, 110, 241, 1) 0%, rgb(105, 200, 245) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Text {
+  color: #fff;
+}

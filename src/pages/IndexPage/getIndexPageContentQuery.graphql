@@ -1,0 +1,20 @@
+query GetIndexPageContentQuery {
+  ListAnalysis {
+    id
+    image
+    name
+    disabled
+    description
+  }
+  ListFAQ {
+    id
+    title
+    description
+  }
+  ListHiw {
+    id
+    image
+    title
+    description
+  }
+}
