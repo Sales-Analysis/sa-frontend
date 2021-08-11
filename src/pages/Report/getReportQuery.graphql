@@ -1,0 +1,10 @@
+query GetReportQuery {
+  getReports {
+    id
+    name
+    portion
+    profit
+    profitPercent
+    group
+  }
+}
