@@ -4,12 +4,11 @@ import { Providers } from 'providers/Providers';
 import { routes } from 'routes';
 import { Footer } from 'components/Footer';
 import { Header } from 'components/Header';
-import { RoutesMenu } from 'components/RoutesMenu';
 
 export const App: React.FC = () => {
   return (
     <Providers>
-      <Header menuItems={<RoutesMenu />} />
+      <Header />
       <Switch>
         {routes.map(({ path, component, exact = false }) => (
           <Route key={path} path={path} exact={exact}>
@@ -17,7 +16,7 @@ export const App: React.FC = () => {
           </Route>
         ))}
       </Switch>
-      <Footer menuItems={<RoutesMenu />} />
+      <Footer />
     </Providers>
   );
 };

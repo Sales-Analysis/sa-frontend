@@ -1,11 +1,17 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
+import { Text } from '@consta/uikit/Text';
+import { RoutesMenu } from 'components/RoutesMenu';
 
 import styles from './Footer.module.css';
 
-interface IProps {
-  menuItems: ReactElement;
-}
-
-export const Footer = React.memo<IProps>(function Footer({ menuItems }) {
-  return <div className={styles.root}>{menuItems}</div>;
+export const Footer = React.memo(function Footer() {
+  return (
+    <div className={styles.root}>
+      <div className={styles.Items}>
+        <RoutesMenu
+          textRenderer={<Text size={'s'} weight={'bold'} className={styles.Text} />}
+        />
+      </div>
+    </div>
+  );
 });

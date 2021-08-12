@@ -1,4 +1,18 @@
 .root {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   flex: 0 0 auto;
-  background: #34393D;
+  background: #34393d;
+}
+
+.Items {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.Text {
+  color: #fff;
 }

@@ -10,6 +10,10 @@ const messages = defineMessages({
     id: 'route.main',
     defaultMessage: 'О сервисе',
   },
+  hiw: {
+    id: 'route.how_it_work',
+    defaultMessage: 'Как это работает',
+  },
   legal: {
     id: 'route.legal',
     defaultMessage: 'Юридическая информация',
@@ -32,6 +36,11 @@ export const routes: TRoute[] = [
     path: '/',
     exact: true,
     title: <FormattedMessage {...messages.main} />,
+    component: <IndexPage />,
+  },
+  {
+    path: '/#hiw',
+    title: <FormattedMessage {...messages.hiw} />,
     component: <IndexPage />,
   },
   {

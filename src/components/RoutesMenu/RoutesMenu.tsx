@@ -1,20 +1,21 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { Link } from 'react-router-dom';
-import { Text } from '@consta/uikit/Text';
 import { routes } from 'routes';
 
 import styles from './RoutesMenu.module.css';
 
-export const RoutesMenu = React.memo(function RoutesMenu() {
+interface IProps {
+  textRenderer: ReactElement;
+}
+
+export const RoutesMenu = React.memo<IProps>(function RoutesMenu({ textRenderer }) {
   return (
     <>
       {routes.map(
         ({ title, path }) =>
           title && (
             <Link key={path} to={path} className={styles.Link}>
-              <Text size={'s'} weight={'bold'}>
-                {title}
-              </Text>
+              {React.cloneElement(textRenderer, {}, title)}
             </Link>
           )
       )}
