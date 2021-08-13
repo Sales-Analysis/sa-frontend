@@ -1,12 +1,9 @@
-import * as Apollo from '@apollo/client';
-import { gql } from '@apollo/client';
-import {
-  GetIndexPageContentQueryQuery,
-  GetIndexPageContentQueryQueryVariables,
-  GetReportQueryQuery,
-  GetReportQueryQueryVariables,
-} from 'types/operations';
+/* eslint-disable */
+/* not edit - generated file */
+import type * as Types from './operations';
 
+import { gql } from '@apollo/client';
+import * as Apollo from '@apollo/client';
 const defaultOptions = {};
 
 export const GetIndexPageContentQueryDocument = gql`
@@ -49,30 +46,28 @@ export const GetIndexPageContentQueryDocument = gql`
  */
 export function useGetIndexPageContentQueryQuery(
   baseOptions?: Apollo.QueryHookOptions<
-    GetIndexPageContentQueryQuery,
-    GetIndexPageContentQueryQueryVariables
+    Types.TGetIndexPageContentQueryQuery,
+    Types.TGetIndexPageContentQueryQueryVariables
   >
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<
-    GetIndexPageContentQueryQuery,
-    GetIndexPageContentQueryQueryVariables
+    Types.TGetIndexPageContentQueryQuery,
+    Types.TGetIndexPageContentQueryQueryVariables
   >(GetIndexPageContentQueryDocument, options);
 }
-
 export function useGetIndexPageContentQueryLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
-    GetIndexPageContentQueryQuery,
-    GetIndexPageContentQueryQueryVariables
+    Types.TGetIndexPageContentQueryQuery,
+    Types.TGetIndexPageContentQueryQueryVariables
   >
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<
-    GetIndexPageContentQueryQuery,
-    GetIndexPageContentQueryQueryVariables
+    Types.TGetIndexPageContentQueryQuery,
+    Types.TGetIndexPageContentQueryQueryVariables
   >(GetIndexPageContentQueryDocument, options);
 }
-
 export type GetIndexPageContentQueryQueryHookResult = ReturnType<
   typeof useGetIndexPageContentQueryQuery
 >;
@@ -80,9 +75,14 @@ export type GetIndexPageContentQueryLazyQueryHookResult = ReturnType<
   typeof useGetIndexPageContentQueryLazyQuery
 >;
 export type GetIndexPageContentQueryQueryResult = Apollo.QueryResult<
-  GetIndexPageContentQueryQuery,
-  GetIndexPageContentQueryQueryVariables
+  Types.TGetIndexPageContentQueryQuery,
+  Types.TGetIndexPageContentQueryQueryVariables
 >;
+export function refetchGetIndexPageContentQueryQuery(
+  variables?: Types.TGetIndexPageContentQueryQueryVariables
+) {
+  return { query: GetIndexPageContentQueryDocument, variables: variables };
+}
 export const GetReportQueryDocument = gql`
   query GetReportQuery {
     getReports {
@@ -112,33 +112,40 @@ export const GetReportQueryDocument = gql`
  * });
  */
 export function useGetReportQueryQuery(
-  baseOptions?: Apollo.QueryHookOptions<GetReportQueryQuery, GetReportQueryQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GetReportQueryQuery, GetReportQueryQueryVariables>(
-    GetReportQueryDocument,
-    options
-  );
-}
-
-export function useGetReportQueryLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    GetReportQueryQuery,
-    GetReportQueryQueryVariables
+  baseOptions?: Apollo.QueryHookOptions<
+    Types.TGetReportQueryQuery,
+    Types.TGetReportQueryQueryVariables
   >
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<GetReportQueryQuery, GetReportQueryQueryVariables>(
+  return Apollo.useQuery<Types.TGetReportQueryQuery, Types.TGetReportQueryQueryVariables>(
     GetReportQueryDocument,
     options
   );
 }
-
+export function useGetReportQueryLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    Types.TGetReportQueryQuery,
+    Types.TGetReportQueryQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    Types.TGetReportQueryQuery,
+    Types.TGetReportQueryQueryVariables
+  >(GetReportQueryDocument, options);
+}
 export type GetReportQueryQueryHookResult = ReturnType<typeof useGetReportQueryQuery>;
 export type GetReportQueryLazyQueryHookResult = ReturnType<
   typeof useGetReportQueryLazyQuery
 >;
 export type GetReportQueryQueryResult = Apollo.QueryResult<
-  GetReportQueryQuery,
-  GetReportQueryQueryVariables
+  Types.TGetReportQueryQuery,
+  Types.TGetReportQueryQueryVariables
 >;
+export function refetchGetReportQueryQuery(
+  variables?: Types.TGetReportQueryQueryVariables
+) {
+  return { query: GetReportQueryDocument, variables: variables };
+}
+// The file generated on: 13.08.21

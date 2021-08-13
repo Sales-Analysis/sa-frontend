@@ -1,8 +1,12 @@
-import { Exact, Maybe } from 'types/structures';
+/* eslint-disable */
+/* not edit - generated file */
+import type * as Types from './structures';
 
-export type GetIndexPageContentQueryQueryVariables = Exact<{ [key: string]: never }>;
+export type TGetIndexPageContentQueryQueryVariables = Types.Exact<{
+  [key: string]: never;
+}>;
 
-export type GetIndexPageContentQueryQuery = {
+export type TGetIndexPageContentQueryQuery = {
   __typename?: 'Query';
   ListAnalysis: Array<{
     __typename?: 'Analysis';
@@ -22,12 +26,12 @@ export type GetIndexPageContentQueryQuery = {
   }>;
 };
 
-export type GetReportQueryQueryVariables = Exact<{ [key: string]: never }>;
+export type TGetReportQueryQueryVariables = Types.Exact<{ [key: string]: never }>;
 
-export type GetReportQueryQuery = {
+export type TGetReportQueryQuery = {
   __typename?: 'Query';
   getReports: Array<
-    Maybe<{
+    Types.Maybe<{
       __typename?: 'Row';
       id: number;
       name: string;
@@ -38,3 +42,5 @@ export type GetReportQueryQuery = {
     }>
   >;
 };
+
+// The file generated on: 13.08.21

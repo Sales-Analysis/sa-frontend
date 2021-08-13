@@ -1,21 +1,57 @@
-schema: './src/apollo/*.schema.graphql'
+schema:
+  - ${BACKEND_API}
+  - './src/apollo/*.schema.graphql'
 documents:
   - './src/**/*.graphql'
   - '!./src/**/*.schema.graphql'
+config:
+  useTypeImports: true
+  typesPrefix: 'T'
+hooks:
+  afterOneFileWrite:
+    - eslint --fix
+    - prettier --write
+
 generates:
   ./src/types/structures.ts:
     plugins:
       - typescript
-    config:
-      useTypeImports: true
+      - time:
+          format: DD.MM.YY
+          message: 'The file generated on: '
+      - add:
+          content:
+            - '/* eslint-disable */'
+            - '/* not edit - generated file */'
+            - ''
   ./src/types/operations.ts:
+    preset: import-types
+    presetConfig:
+      typesPath: './structures'
     plugins:
       - typescript-operations
-    config:
-      useTypeImports: true
+      - time:
+          format: DD.MM.YY
+          message: 'The file generated on: '
+      - add:
+          content:
+            - '/* eslint-disable */'
+            - '/* not edit - generated file */'
+            - ''
   ./src/types/apollo.ts:
+    preset: import-types
+    presetConfig:
+      typesPath: './operations'
     plugins:
       - typescript-react-apollo
+      - time:
+          format: DD.MM.YY
+          message: 'The file generated on: '
+      - add:
+          content:
+            - '/* eslint-disable */'
+            - '/* not edit - generated file */'
+            - ''
     config:
-      useTypeImports: true
+      withRefetchFn: true
 

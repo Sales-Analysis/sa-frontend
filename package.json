@@ -15,7 +15,7 @@
     "prepare": "husky install",
     "graphql-faker": "graphql-faker ./src/apollo/schema.graphql -p 8080",
     "apollo:codegen": "apollo client:codegen src/types -c ./apollo.config.js --target=typescript --outputFlat",
-    "generate": "graphql-codegen"
+    "generate": "dotenv -c .env.local -- graphql-codegen"
   },
   "browserslist": {
     "production": [
@@ -60,7 +60,10 @@
   },
   "devDependencies": {
     "@formatjs/cli": "^4.2.29",
+    "@graphql-codegen/add": "^3.0.0",
     "@graphql-codegen/cli": "^2.0.1",
+    "@graphql-codegen/import-types-preset": "^2.0.0",
+    "@graphql-codegen/time": "^3.0.0",
     "@graphql-codegen/typescript": "^2.0.0",
     "@graphql-codegen/typescript-operations": "^2.0.1",
     "@graphql-codegen/typescript-react-apollo": "^3.0.0",

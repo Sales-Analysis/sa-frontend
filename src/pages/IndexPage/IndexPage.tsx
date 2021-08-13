@@ -4,7 +4,7 @@ import { useQuery } from '@apollo/client';
 import { loader } from 'graphql.macro';
 import { AnimatedBlock } from 'pages/IndexPage/AnimatedBlock';
 import { Description } from 'pages/IndexPage/Description';
-import { Query } from 'types/structures';
+import { TQuery } from 'types/structures';
 import { AnalysisList } from './AnalysisList';
 import { Faq } from './Faq';
 
@@ -24,7 +24,7 @@ const messages = defineMessages({
 });
 export const IndexPage = React.memo(function IndexPage() {
   const { formatMessage } = useIntl();
-  const { data } = useQuery<Query>(getIndexPageContentQuery);
+  const { data } = useQuery<TQuery>(getIndexPageContentQuery);
 
   return (
     <div className={styles.root}>

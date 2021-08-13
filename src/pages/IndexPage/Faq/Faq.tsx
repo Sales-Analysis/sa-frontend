@@ -2,7 +2,7 @@ import React from 'react';
 import Collapsible from 'react-collapsible';
 import { defineMessages, useIntl } from 'react-intl';
 import { Text } from '@consta/uikit/Text';
-import { Faq as IFaq } from 'types/structures';
+import { TFaq } from 'types/structures';
 
 import styles from './Faq.module.css';
 
@@ -14,7 +14,7 @@ const messages = defineMessages({
 });
 
 interface IProps {
-  items: IFaq[];
+  items: TFaq[];
 }
 
 export const Faq = React.memo<IProps>(function Faq({ items }) {
