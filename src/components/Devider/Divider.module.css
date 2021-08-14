@@ -1,0 +1,4 @@
+.root {
+  border-bottom: rgba(0, 65, 102, 0.2) var(--control-border-width) solid;
+  margin: var(--space-3xl) 0;
+}

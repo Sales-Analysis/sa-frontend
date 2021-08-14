@@ -1,6 +1,7 @@
 import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import { Text } from '@consta/uikit/Text';
+import { Page } from 'components/Page';
 import { FirstStep } from './FirstStep';
 import { SecondStep } from './SecondStep';
 import { UploadZone } from './UploadZone';
@@ -19,12 +20,16 @@ export const AnalysisPage: React.FC = () => {
   const { formatMessage } = useIntl();
 
   return (
-    <div className={styles.root}>
-      <Text size={'4xl'}>{formatMessage(messages.title)}</Text>
-      <FirstStep>
-        <UploadZone files={files} onUpload={setFiles} />
-      </FirstStep>
-      <SecondStep />
-    </div>
+    <Page>
+      <div className={styles.root}>
+        <Text size={'4xl'} weight={'bold'}>
+          {formatMessage(messages.title)}
+        </Text>
+        <FirstStep>
+          <UploadZone files={files} onUpload={setFiles} />
+        </FirstStep>
+        <SecondStep />
+      </div>
+    </Page>
   );
 };

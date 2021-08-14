@@ -1,0 +1,14 @@
+.root {
+  padding: var(--space-xl) 15% 5% 15%;
+  background: #e5e5e5;
+}
+
+.Wrapper {
+  padding: 60px 10% 80px 10%;
+  background: #fff;
+}
+
+.ButtonsGroup {
+  display: flex;
+  justify-content: space-between;
+}

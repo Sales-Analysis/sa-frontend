@@ -1,6 +1,9 @@
 .root {
-  padding: var(--space-xl) 0;
   background: var(--color-bg-stripe);
+
+  [class^="DragNDropField"] {
+    height: 280px;
+  }
 }
 
 .Button {

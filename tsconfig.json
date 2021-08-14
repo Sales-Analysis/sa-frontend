@@ -3,7 +3,8 @@
   "shouldExtractLiteralValuesFromEnum": true,
   "compilerOptions": {
     "target": "es2017",
-    "baseUrl": "src"
+    "baseUrl": "src",
+    "noUncheckedIndexedAccess": true
   },
   "include": [
     "src",

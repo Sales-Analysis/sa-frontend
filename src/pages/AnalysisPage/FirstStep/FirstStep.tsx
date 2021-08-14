@@ -27,9 +27,8 @@ export const FirstStep: React.FC<PropsWithChildren<ReactNode>> = ({ children }) 
   const { formatMessage } = useIntl();
 
   return (
-    <Step className={styles.root}>
-      <Text size={'2xl'}>{formatMessage(messages.title)}</Text>
-      <Text view={'ghost'}>
+    <Step className={styles.root} title={formatMessage(messages.title)}>
+      <Text className={styles.Description} view={'ghost'}>
         {formatMessage(messages.description, {
           url: <Link to={'/'}>{formatMessage(messages.example)}</Link>,
         })}
