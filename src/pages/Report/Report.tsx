@@ -7,8 +7,7 @@ import { Pagination } from '@consta/uikit/Pagination';
 import { Table, TableColumn, TableRow } from '@consta/uikit/Table';
 import { Text } from '@consta/uikit/Text';
 import { loader } from 'graphql.macro';
-
-import styles from './Report.module.css';
+import { Page } from 'components/Page';
 
 const getReportQuery = loader('./getReportQuery.graphql');
 
@@ -88,7 +87,7 @@ export const Report: React.FC<IProps> = () => {
   };
 
   return (
-    <div className={styles.root}>
+    <Page>
       <Text size={'4xl'}>{formatMessage(messages.title)}</Text>
       <Button label={formatMessage(messages.downloadButton)} iconLeft={IconDownload} />
       <Table<ITableRow> columns={columns} rows={rows} borderBetweenRows />
@@ -99,6 +98,6 @@ export const Report: React.FC<IProps> = () => {
         totalPages={totalPages}
         hotkeys={hotKeys}
       />
-    </div>
+    </Page>
   );
 };

@@ -5,9 +5,11 @@ import { routes } from 'routes';
 import { Footer } from 'components/Footer';
 import { Header } from 'components/Header';
 
+import styles from './App.module.css';
+
 export const App: React.FC = () => {
   return (
-    <Providers>
+    <Providers className={styles.root}>
       <Header />
       <Switch>
         {routes.map(({ path, component, exact = false }) => (
