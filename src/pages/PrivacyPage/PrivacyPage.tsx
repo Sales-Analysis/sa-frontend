@@ -5,12 +5,12 @@ import { Page } from 'components/Page';
 
 const messages = defineMessages({
   title: {
-    id: 'pages.legal.title',
-    defaultMessage: 'Юридическая информация',
+    id: 'pages.privacy.title',
+    defaultMessage: 'Конфиденциальность',
   },
 });
 
-export const LegalPage: React.FC = () => {
+export const PrivacyPage: React.FC = () => {
   const { formatMessage } = useIntl();
 
   return (
