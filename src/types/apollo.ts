@@ -20,7 +20,7 @@ export const GetIndexPageContentQueryDocument = gql`
       title
       description
     }
-    ListHiw {
+    ListHIW {
       id
       image
       title
@@ -148,4 +148,4 @@ export function refetchGetReportQueryQuery(
 ) {
   return { query: GetReportQueryDocument, variables: variables };
 }
-// The file generated on: 13.08.21
+// The file generated on: 14.08.21

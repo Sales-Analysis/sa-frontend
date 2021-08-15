@@ -1,6 +1,6 @@
 /* eslint-disable */
 /* not edit - generated file */
-export type Maybe<T> = T | null;
+export type Maybe<T> = T | null | undefined;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> &
   { [SubKey in K]?: Maybe<T[SubKey]> };
@@ -33,10 +33,10 @@ export type TFaq = {
 
 export type THiw = {
   __typename?: 'HIW';
-  id: Scalars['Int'];
-  title: Scalars['String'];
   description: Scalars['String'];
+  id: Scalars['Int'];
   image: Scalars['String'];
+  title: Scalars['String'];
 };
 
 export type TQuery = {
@@ -44,13 +44,12 @@ export type TQuery = {
   ListAnalysis: Array<TAnalysis>;
   ListFAQ: Array<TFaq>;
   ListHIW: Array<THiw>;
-  ListHiw: Array<THiw>;
   getReports: Array<Maybe<TRow>>;
 };
 
 export type TRow = {
   __typename?: 'Row';
-  id: Scalars['Int'];
+  id: Scalars['String'];
   name: Scalars['String'];
   profit: Scalars['Float'];
   profitPercent: Scalars['Float'];
@@ -58,4 +57,4 @@ export type TRow = {
   group: Scalars['String'];
 };
 
-// The file generated on: 13.08.21
+// The file generated on: 14.08.21

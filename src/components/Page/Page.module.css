@@ -7,6 +7,8 @@
 .Wrapper {
   padding: 60px 10% 80px 10%;
   background: #fff;
+  display: flex;
+  flex-direction: column;
 }
 
 .ButtonsGroup {

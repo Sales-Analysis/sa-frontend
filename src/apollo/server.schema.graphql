@@ -1,26 +1,32 @@
-type Query {
-  ListAnalysis: [Analysis!]!
-  ListHiw: [Hiw!]!
-  ListFAQ: [FAQ!]!
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+  query: Query
 }
 
 type Analysis {
-  id: Int!
-  name: String!
   description: String!
-  image: String!
   disabled: Boolean!
+  id: Int!
+  image: String!
+  name: String!
 }
 
 type FAQ {
+  description: String!
   id: Int!
   title: String!
-  description: String!
 }
 
-type Hiw {
-  id: Int!
-  title: String!
+type HIW {
   description: String!
+  id: Int!
   image: String!
+  title: String!
+}
+
+type Query {
+  ListAnalysis: [Analysis!]!
+  ListFAQ: [FAQ!]!
+  ListHIW: [HIW!]!
 }

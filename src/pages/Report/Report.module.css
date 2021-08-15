@@ -1,2 +1,16 @@
-.root {
+.TitleContainer {
+  padding: 0 10%;
+
+  .Title {
+    padding-bottom: var(--space-xl);
+  }
+}
+
+.SubtitleContainer {
+  display: inline-flex;
+  flex: 1;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-4xl) 0 var(--space-2xl) 0;
 }

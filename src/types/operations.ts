@@ -17,8 +17,8 @@ export type TGetIndexPageContentQueryQuery = {
     description: string;
   }>;
   ListFAQ: Array<{ __typename?: 'FAQ'; id: number; title: string; description: string }>;
-  ListHiw: Array<{
-    __typename?: 'Hiw';
+  ListHIW: Array<{
+    __typename?: 'HIW';
     id: number;
     image: string;
     title: string;
@@ -33,7 +33,7 @@ export type TGetReportQueryQuery = {
   getReports: Array<
     Types.Maybe<{
       __typename?: 'Row';
-      id: number;
+      id: string;
       name: string;
       portion: number;
       profit: number;
@@ -43,4 +43,4 @@ export type TGetReportQueryQuery = {
   >;
 };
 
-// The file generated on: 13.08.21
+// The file generated on: 14.08.21

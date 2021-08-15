@@ -1,5 +1,5 @@
 schema:
-  - ${BACKEND_API}
+  - ${REACT_APP_BACKEND_API}
   - './src/apollo/*.schema.graphql'
 documents:
   - './src/**/*.graphql'
@@ -7,11 +7,12 @@ documents:
 config:
   useTypeImports: true
   typesPrefix: 'T'
+  maybeValue: T | null | undefined
 hooks:
   afterOneFileWrite:
     - eslint --fix
     - prettier --write
-
+overwrite: true
 generates:
   ./src/types/structures.ts:
     plugins:

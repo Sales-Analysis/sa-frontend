@@ -4,10 +4,16 @@ import { useQuery } from '@apollo/client';
 import { Button } from '@consta/uikit/Button';
 import { IconDownload } from '@consta/uikit/IconDownload';
 import { Pagination } from '@consta/uikit/Pagination';
-import { Table, TableColumn, TableRow } from '@consta/uikit/Table';
+import { Table } from '@consta/uikit/Table';
 import { Text } from '@consta/uikit/Text';
 import { loader } from 'graphql.macro';
+import { Maybe, TQuery, TRow } from 'types/structures';
 import { Page } from 'components/Page';
+import { columns } from './data';
+import { ITableRow } from './types';
+
+import './table.css';
+import styles from './Report.module.css';
 
 const getReportQuery = loader('./getReportQuery.graphql');
 
@@ -16,58 +22,35 @@ const messages = defineMessages({
     id: 'pages.report.title',
     defaultMessage: 'Отчет по ABC анализу',
   },
+  description: {
+    id: 'pages.report.description',
+    defaultMessage: `Товары разделены по группам по степени их значимости.
+      Группа А — самые рентабельные товары, группа B менее рентабельная и
+      С самая не рентабельная.`,
+  },
+  subtitle: {
+    id: 'pages.report.subtitle',
+    defaultMessage: 'ABC по группам',
+  },
   downloadButton: {
     id: 'pages.report.button.download',
     defaultMessage: 'Скачать отчет',
   },
 });
 
-interface ITableRow extends TableRow {
-  name: string;
-  profit: number;
-  profitPercent: number;
-  portion: number;
-  group: string;
+function isReportRow(element: Maybe<TRow>): element is ITableRow {
+  return element !== null;
 }
 
-const columns: TableColumn<ITableRow>[] = [
-  {
-    title: 'Наименование',
-    accessor: 'name',
-    sortable: true,
-  },
-  {
-    title: 'Доход',
-    accessor: 'profit',
-    sortable: true,
-  },
-  {
-    title: 'Доля дохода',
-    accessor: 'profitPercent',
-    sortable: true,
-  },
-  {
-    title: 'Накопленная доля',
-    accessor: 'portion',
-    sortable: true,
-  },
-  {
-    title: 'Группа',
-    accessor: 'group',
-    sortable: true,
-  },
-];
-
-interface IProps {
-  some?: any;
-}
-
-export const Report: React.FC<IProps> = () => {
+export const Report: React.FC = () => {
   const { formatMessage } = useIntl();
   const [currentPage, setCurrentPage] = React.useState<number>(0);
-  const { data } = useQuery(getReportQuery);
+  const { data, loading } = useQuery<TQuery>(getReportQuery);
 
-  const rows = useMemo(() => data?.getReports || [], [data]);
+  const rows = useMemo<ITableRow[]>(
+    () => data?.getReports.filter(isReportRow) || [],
+    [data]
+  );
 
   const totalPages = 10;
 
@@ -88,9 +71,23 @@ export const Report: React.FC<IProps> = () => {
 
   return (
     <Page>
-      <Text size={'4xl'}>{formatMessage(messages.title)}</Text>
-      <Button label={formatMessage(messages.downloadButton)} iconLeft={IconDownload} />
-      <Table<ITableRow> columns={columns} rows={rows} borderBetweenRows />
+      <div className={styles.TitleContainer}>
+        <Text size={'4xl'} weight={'bold'} className={styles.Title}>
+          {formatMessage(messages.title)}
+        </Text>
+        <Text view={'ghost'}>{formatMessage(messages.description)}</Text>
+      </div>
+      <div className={styles.SubtitleContainer}>
+        <Text weight={'bold'}>{formatMessage(messages.subtitle)}</Text>
+        <Button label={formatMessage(messages.downloadButton)} iconLeft={IconDownload} />
+      </div>
+      <Table<ITableRow>
+        columns={columns}
+        rows={rows}
+        lazyLoad={{ maxVisibleRows: 20 }}
+        borderBetweenRows
+        stickyHeader
+      />
       <Pagination
         form="brick"
         currentPage={currentPage}

@@ -3,6 +3,7 @@
   "shouldExtractLiteralValuesFromEnum": true,
   "compilerOptions": {
     "target": "es2017",
+    "module": "ESNext",
     "baseUrl": "src",
     "noUncheckedIndexedAccess": true
   },
