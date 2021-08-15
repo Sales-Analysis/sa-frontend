@@ -46,6 +46,7 @@
     "@visx/mock-data": "^1.7.0",
     "@visx/scale": "^1.14.0",
     "@visx/shape": "^1.17.1",
+    "axios": "^0.21.1",
     "babel-loader": "8.1.0",
     "graphql": "^15.5.1",
     "graphql.macro": "^1.4.2",

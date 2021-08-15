@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import { Attach } from '@consta/uikit/Attach';
 import { Button } from '@consta/uikit/Button';
@@ -31,25 +31,33 @@ const fileSizeToMb = (size: number) => {
 
 interface IProps {
   files: File[];
-  onUpload: Dispatch<SetStateAction<File[]>>;
+  uploadProgress: number;
+  onUpload: (file: File) => void;
   onDeleteFile: (fileName: string) => void;
   uploadLimit: number;
 }
 
 export const UploadZone: React.FC<IProps> = ({
   files,
+  uploadProgress = 0,
   uploadLimit,
   onUpload,
   onDeleteFile,
 }) => {
   const { formatMessage } = useIntl();
+
   const fileSize = useMemo(() => uploadLimit * 1024 * 1024, [uploadLimit]);
 
   return (
     <div className={styles.root}>
       {!files.length && (
         <div className={styles.DndZone}>
-          <DragNDropField onDropFiles={onUpload} maxSize={fileSize}>
+          <DragNDropField
+            onDropFiles={(files) => {
+              files[0] && onUpload(files[0]);
+            }}
+            maxSize={fileSize}
+          >
             {({ openFileDialog }) => (
               <>
                 <Text>{formatMessage(messages.description)}</Text>
@@ -70,6 +78,7 @@ export const UploadZone: React.FC<IProps> = ({
           fileName={file.name}
           fileExtension={file.name.match(/\.(?!.*\.)(\w*)/)?.[1]}
           fileDescription={`${fileSizeToMb(file.size)} Мб`}
+          loadingProgress={uploadProgress}
           buttonIcon={IconTrash}
           buttonTitle={formatMessage(messages.buttonDelete)}
           onClick={() => onDeleteFile(file.name)}
