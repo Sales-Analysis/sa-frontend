@@ -15,9 +15,15 @@ const messages = defineMessages({
   },
 });
 
+const UPLOAD_LIMIT = Number(process.env.REACT_APP_UPLOAD_FILESIZE) || 100;
+
 export const AnalysisPage: React.FC = () => {
   const [files, setFiles] = React.useState<File[]>([]);
   const { formatMessage } = useIntl();
+
+  const onDeleteFile = (fileName: string) => {
+    setFiles((prevState) => prevState.filter(({ name }) => name !== fileName));
+  };
 
   return (
     <Page>
@@ -25,8 +31,13 @@ export const AnalysisPage: React.FC = () => {
         <Text size={'4xl'} weight={'bold'}>
           {formatMessage(messages.title)}
         </Text>
-        <FirstStep>
-          <UploadZone files={files} onUpload={setFiles} />
+        <FirstStep uploadLimit={UPLOAD_LIMIT}>
+          <UploadZone
+            files={files}
+            onUpload={setFiles}
+            onDeleteFile={onDeleteFile}
+            uploadLimit={UPLOAD_LIMIT}
+          />
         </FirstStep>
         <SecondStep />
       </div>

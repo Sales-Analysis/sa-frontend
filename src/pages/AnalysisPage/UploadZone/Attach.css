@@ -1,0 +1,30 @@
+.Attach {
+  height: 66px;
+  display: flex;
+  align-items: center;
+  padding: var(--space-s);
+  box-sizing: border-box;
+  border: var(--control-border-width) solid #d9d9d9;
+  border-radius: var(--control-radius);
+
+  &-File {
+    width: var(--size-text-3xl);
+    height: auto;
+  }
+
+  &-Content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+    padding-left: var(--space-xl);
+
+    .Text {
+      font-size: var(--size-text-s);
+    }
+  }
+
+  &-Button {
+    opacity: 1;
+  }
+}

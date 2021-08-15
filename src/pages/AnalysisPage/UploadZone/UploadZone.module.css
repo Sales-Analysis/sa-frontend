@@ -1,4 +1,4 @@
-.root {
+.DndZone {
   background: var(--color-bg-stripe);
 
   [class^="DragNDropField"] {
@@ -8,4 +8,8 @@
 
 .Button {
   border-radius: 2px;
+}
+
+.Attach {
+  margin-top: var(--space-xl);
 }
