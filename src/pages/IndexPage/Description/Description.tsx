@@ -2,7 +2,6 @@ import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import { Text } from '@consta/uikit/Text';
 import { StartAnalysisButton } from 'components/StartAnalysisButton';
-import { noop } from 'utils';
 
 import styles from './Description.module.css';
 
@@ -32,7 +31,7 @@ export const Description = React.memo(function Description() {
       <Text size={'2xl'} align={'center'} view={'ghost'}>
         {formatMessage(messages.description)}
       </Text>
-      <StartAnalysisButton onClick={noop} />
+      <StartAnalysisButton />
     </div>
   );
 });

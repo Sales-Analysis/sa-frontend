@@ -2,7 +2,6 @@ import React from 'react';
 import { Text } from '@consta/uikit/Text';
 import { RoutesMenu } from 'components/RoutesMenu';
 import { StartAnalysisButton } from 'components/StartAnalysisButton';
-import { noop } from 'utils';
 
 import styles from './Header.module.css';
 
@@ -12,7 +11,7 @@ export const Header = React.memo(function Header() {
       <div className={styles.Items}>
         <RoutesMenu textRenderer={<Text size={'s'} weight={'bold'} />} />
       </div>
-      <StartAnalysisButton onClick={noop} isBordered={true} />
+      <StartAnalysisButton isBordered={true} />
     </div>
   );
 });

@@ -13,12 +13,10 @@ const messages = defineMessages({
 });
 
 interface IProps {
-  onClick: () => any;
   isBordered?: boolean;
 }
 
 export const StartAnalysisButton = React.memo<IProps>(function StartAnalysisButton({
-  onClick,
   isBordered = false,
 }) {
   const { formatMessage } = useIntl();

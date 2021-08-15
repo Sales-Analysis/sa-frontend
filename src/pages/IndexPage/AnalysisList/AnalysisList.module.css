@@ -1,6 +1,10 @@
 .root {
-  padding: 0 380px;
+  padding: 0 250px;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.WidgetsContainer {
+  display: inline-flex;
 }

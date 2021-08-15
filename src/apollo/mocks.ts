@@ -1,8 +1,16 @@
 import { IMockStore } from '@graphql-tools/mock/types';
 import faker from 'faker';
-import { TFaq, TRow } from 'types/structures';
+import { TAnalysis, TFaq, TRow } from 'types/structures';
 
 export const mocks = {
+  Analysis: (): TAnalysis => ({
+    __typename: 'Analysis',
+    id: faker.datatype.number(),
+    name: faker.random.arrayElement(['ABC']),
+    description: faker.lorem.paragraph(),
+    disabled: faker.datatype.boolean(),
+    image: faker.image.business(200, 200),
+  }),
   FAQ: (): TFaq => ({
     __typename: 'FAQ',
     id: faker.datatype.number(),

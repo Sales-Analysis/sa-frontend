@@ -1,2 +1,29 @@
 .root {
+  border: var(--control-border-width) solid var(--color-control-bg-border-default);
+  border-radius: 8px;
+  padding: var(--space-4xl);
+  margin: var(--space-m);
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  flex: 1;
+}
+
+.TitleContainer {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Content {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 60%;
+}
+
+.ImageContainer {
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }

@@ -13,7 +13,7 @@ const schemaWithMocks = addMocksToSchema({
 });
 
 export const client = new ApolloClient({
-  uri: '/graphql',
-  cache,
+  uri: '/api',
   link: new SchemaLink({ schema: schemaWithMocks }),
+  cache,
 });

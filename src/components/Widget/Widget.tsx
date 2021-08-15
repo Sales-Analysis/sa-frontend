@@ -1,8 +1,8 @@
 import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import { Badge } from '@consta/uikit/Badge';
-import { Button } from '@consta/uikit/Button';
 import { Text } from '@consta/uikit/Text';
+import { StartAnalysisButton } from 'components/StartAnalysisButton';
 
 import styles from './Widget.module.css';
 
@@ -29,10 +29,12 @@ export const Widget = React.memo<IProps>(function Widget({
   const { formatMessage } = useIntl();
 
   return (
-    <div>
-      <div className={styles.Wrapper}>
-        <div>
-          <Text>{title}</Text>
+    <div className={styles.root}>
+      <div className={styles.Content}>
+        <div className={styles.TitleContainer}>
+          <Text size={'3xl'} weight={'bold'}>
+            {title}
+          </Text>
           {disabled && (
             <Badge
               view={'filled'}
@@ -42,10 +44,12 @@ export const Widget = React.memo<IProps>(function Widget({
             />
           )}
         </div>
-        <Text>{description}</Text>
-        {!disabled && <Button />}
+        <Text view={'secondary'}>{description}</Text>
+        {!disabled && <StartAnalysisButton />}
       </div>
-      <img src={img} alt="widget" />
+      <div className={styles.ImageContainer}>
+        <img className={styles.Image} src={img} alt="widget" />
+      </div>
     </div>
   );
 });

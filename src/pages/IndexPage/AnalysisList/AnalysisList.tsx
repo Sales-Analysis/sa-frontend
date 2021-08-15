@@ -1,6 +1,8 @@
 import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import { Text } from '@consta/uikit/Text';
+import { TAnalysis } from 'types/structures';
+import { Widget } from 'components/Widget';
 
 import styles from './AnalysisList.module.css';
 
@@ -12,7 +14,7 @@ const messages = defineMessages({
 });
 
 interface IProps {
-  widgets: any[];
+  widgets: TAnalysis[];
 }
 
 export const AnalysisList: React.FC<IProps> = ({ widgets }) => {
@@ -23,6 +25,17 @@ export const AnalysisList: React.FC<IProps> = ({ widgets }) => {
       <Text size={'5xl'} weight={'bold'}>
         {formatMessage(messages.widgets_title)}
       </Text>
+      <div className={styles.WidgetsContainer}>
+        {widgets.map(({ id, name, image, description, disabled }) => (
+          <Widget
+            key={id}
+            title={name}
+            description={description}
+            img={image}
+            disabled={disabled}
+          />
+        ))}
+      </div>
     </div>
   );
 };
