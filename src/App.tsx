@@ -12,7 +12,7 @@ export const App: React.FC = () => {
     <Providers className={styles.root}>
       <Header />
       <Switch>
-        {routes.map(({ path, component, exact = false }) => (
+        {Object.values(routes).map(({ path, component, exact = false }) => (
           <Route key={path} path={path} exact={exact}>
             {component}
           </Route>

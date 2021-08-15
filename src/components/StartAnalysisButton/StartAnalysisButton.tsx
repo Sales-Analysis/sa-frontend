@@ -1,6 +1,9 @@
 import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
+import { useHistory } from 'react-router-dom';
 import { Button } from '@consta/uikit/Button';
+import { routes } from 'routes';
+import { getRoutePath } from 'utils';
 
 const messages = defineMessages({
   button: {
@@ -19,12 +22,13 @@ export const StartAnalysisButton = React.memo<IProps>(function StartAnalysisButt
   isBordered = false,
 }) {
   const { formatMessage } = useIntl();
+  const history = useHistory();
 
   return (
     <Button
       view={isBordered ? 'secondary' : 'primary'}
       label={formatMessage(messages.button)}
-      onClick={onClick}
+      onClick={() => history.push(getRoutePath(routes.analysis))}
     />
   );
 });

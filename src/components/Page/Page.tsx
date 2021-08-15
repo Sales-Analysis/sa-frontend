@@ -3,7 +3,9 @@ import { defineMessages, useIntl } from 'react-intl';
 import { useHistory } from 'react-router-dom';
 import { Button } from '@consta/uikit/Button';
 import classNames from 'classnames';
+import { routes } from 'routes';
 import { Divider } from 'components/Devider';
+import { getRoutePath } from 'utils';
 
 import styles from './Page.module.css';
 
@@ -35,7 +37,7 @@ export const Page: React.FC<PropsWithChildren<IProps>> = ({ className, children 
           <Button
             view={'secondary'}
             label={formatMessage(messages.toMainButton)}
-            onClick={() => history.push('')}
+            onClick={() => history.push(getRoutePath(routes.main))}
           />
           <Button
             view={'secondary'}

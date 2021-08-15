@@ -11,7 +11,7 @@ interface IProps {
 export const RoutesMenu = React.memo<IProps>(function RoutesMenu({ textRenderer }) {
   return (
     <>
-      {routes.map(
+      {Object.values(routes).map(
         ({ title, path }) =>
           title && (
             <Link key={path} to={path} className={styles.Link}>

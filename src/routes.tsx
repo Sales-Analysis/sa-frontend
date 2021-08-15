@@ -1,9 +1,11 @@
-import React, { ReactElement, ReactNode } from 'react';
+import React from 'react';
 import { defineMessages, FormattedMessage } from 'react-intl';
 import { AnalysisPage } from 'pages/AnalysisPage';
 import { IndexPage } from 'pages/IndexPage';
 import { LegalPage } from 'pages/LegalPage';
+import { PrivacyPage } from 'pages/PrivacyPage';
 import { Report } from 'pages/Report';
+import { IRoute, IRoutesCollection } from 'types';
 
 const messages = defineMessages({
   main: {
@@ -24,41 +26,34 @@ const messages = defineMessages({
   },
 });
 
-export type TRoute = {
-  path: string;
-  component: ReactNode;
-  title?: ReactElement;
-  exact?: boolean;
-};
-
-export const routes: TRoute[] = [
-  {
+export const routes: IRoutesCollection<IRoute> = {
+  main: {
     path: '/',
     exact: true,
     title: <FormattedMessage {...messages.main} />,
     component: <IndexPage />,
   },
-  {
+  hiw: {
     path: '/#hiw',
     title: <FormattedMessage {...messages.hiw} />,
     component: <IndexPage />,
   },
-  {
+  analysis: {
     path: '/analysis',
     component: <AnalysisPage />,
   },
-  {
+  report: {
     path: '/report',
     component: <Report />,
   },
-  {
+  legal: {
     path: '/legal',
     title: <FormattedMessage {...messages.legal} />,
     component: <LegalPage />,
   },
-  {
+  privacy: {
     path: '/privacy',
     title: <FormattedMessage {...messages.privacy} />,
-    component: <div>Privacy</div>,
+    component: <PrivacyPage />,
   },
-];
+};
