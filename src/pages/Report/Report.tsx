@@ -40,6 +40,8 @@ const messages = defineMessages({
   },
 });
 
+const ROWS_PER_PAGE = 30;
+
 function isReportRow(element: Maybe<TRow>): element is ITableRow {
   return element !== null;
 }
@@ -54,6 +56,12 @@ export const Report: React.FC = () => {
     [data]
   );
 
+  const visibleRows = useMemo<ITableRow[]>(() => {
+    const start = currentPage * ROWS_PER_PAGE;
+
+    return rows.slice(start, start + ROWS_PER_PAGE);
+  }, [currentPage, rows]);
+
   const stats = useMemo(() => {
     return (
       data?.getReports.reduce((acc, report) => {
@@ -64,7 +72,9 @@ export const Report: React.FC = () => {
     );
   }, [data]);
 
-  const totalPages = 10;
+  const totalPages = useMemo(() => {
+    return Math.floor(rows.length / ROWS_PER_PAGE) ?? 0;
+  }, [rows]);
 
   const hotKeys = {
     prevPage: {
@@ -98,8 +108,7 @@ export const Report: React.FC = () => {
       </div>
       <Table<ITableRow>
         columns={columns}
-        rows={rows}
-        lazyLoad={{ maxVisibleRows: 20 }}
+        rows={visibleRows}
         borderBetweenRows
         stickyHeader
       />
