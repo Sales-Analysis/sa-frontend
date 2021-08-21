@@ -17,7 +17,7 @@ async function loadLocaleData(
 
 export const LanguageProvider = React.memo<PropsWithChildren<ReactNode>>(
   function LocaleProvider({ children }) {
-    const locale = navigator.language;
+    const locale = 'ru-RU'; //navigator.language;
     const [messages, setMessages] = useState<Record<
       string,
       MessageFormatElement[]

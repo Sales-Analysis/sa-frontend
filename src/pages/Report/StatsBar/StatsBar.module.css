@@ -1,0 +1,58 @@
+.root {
+  flex-basis: 100%;
+  display: inline-flex;
+  flex-direction: row;
+  padding-top: var(--space-3xl);
+}
+
+.Group {
+  &:first-child {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+  }
+
+  &:last-child {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+  }
+
+  &Label {
+    padding-bottom: var(--space-xs);
+
+    &-a {
+      color: rgba(34, 195, 142, 1);
+    }
+
+    &-b {
+      color: rgba(243, 139, 0, 1);
+    }
+
+    &-c {
+      color: rgba(235, 87, 87, 1);
+    }
+  }
+
+  &Body {
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: inherit;
+
+    &-a {
+      background: rgba(34, 195, 142, 1);
+    }
+
+    &-b {
+      background: rgba(243, 139, 0, 1);
+    }
+
+    &-c {
+      background: rgba(235, 87, 87, 1);
+    }
+
+    &Text {
+      color: #fff;
+    }
+  }
+}

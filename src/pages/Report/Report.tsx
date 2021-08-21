@@ -7,6 +7,7 @@ import { Pagination } from '@consta/uikit/Pagination';
 import { Table } from '@consta/uikit/Table';
 import { Text } from '@consta/uikit/Text';
 import { loader } from 'graphql.macro';
+import { StatsBar } from 'pages/Report/StatsBar';
 import { Maybe, TQuery, TRow } from 'types/structures';
 import { Page } from 'components/Page';
 import { columns } from './data';
@@ -53,6 +54,16 @@ export const Report: React.FC = () => {
     [data]
   );
 
+  const stats = useMemo(() => {
+    return (
+      data?.getReports.reduce((acc, report) => {
+        const value = acc.has(report?.group) ? acc.get(report?.group) + 1 : 1;
+
+        return acc.set(report?.group, value);
+      }, new Map()) || new Map()
+    );
+  }, [data]);
+
   const totalPages = 10;
 
   const hotKeys = {
@@ -78,6 +89,9 @@ export const Report: React.FC = () => {
         </Text>
         <Text view={'ghost'}>{formatMessage(messages.description)}</Text>
       </div>
+
+      <StatsBar stats={stats} />
+
       <div className={styles.SubtitleContainer}>
         <Text weight={'bold'}>{formatMessage(messages.subtitle)}</Text>
         <Button label={formatMessage(messages.downloadButton)} iconLeft={IconDownload} />
