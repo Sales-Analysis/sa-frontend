@@ -10,6 +10,7 @@ import { loader } from 'graphql.macro';
 import { Maybe, TQuery, TRow } from 'types/structures';
 import { Page } from 'components/Page';
 import { columns } from './data';
+import { NavButtons } from './NavButtons';
 import { ITableRow } from './types';
 
 import './table.css';
@@ -70,7 +71,7 @@ export const Report: React.FC = () => {
   };
 
   return (
-    <Page>
+    <Page bottomComponent={<NavButtons />}>
       <div className={styles.TitleContainer}>
         <Text size={'4xl'} weight={'bold'} className={styles.Title}>
           {formatMessage(messages.title)}

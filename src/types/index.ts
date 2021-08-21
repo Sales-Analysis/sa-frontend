@@ -1,8 +1,6 @@
 import { ReactElement, ReactNode } from 'react';
 
-export interface IRoutesCollection<T> {
-  [key: string]: T;
-}
+export type TRoutesCollection<K extends string, T> = Record<K, T>;
 
 export interface IRoute {
   path: string;

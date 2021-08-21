@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import { Text } from '@consta/uikit/Text';
 import { useFileUpload } from 'hooks/useFileUpload';
+import { NavButtons } from 'pages/AnalysisPage/NavButtons';
 import { Page } from 'components/Page';
 import { FirstStep } from './FirstStep';
 import { SecondStep } from './SecondStep';
@@ -37,7 +38,7 @@ export const AnalysisPage: React.FC = () => {
   );
 
   return (
-    <Page>
+    <Page bottomComponent={<NavButtons canCalculate={true} />}>
       <div className={styles.root}>
         <Text size={'4xl'} weight={'bold'}>
           {formatMessage(messages.title)}

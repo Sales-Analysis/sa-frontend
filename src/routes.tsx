@@ -5,7 +5,7 @@ import { IndexPage } from 'pages/IndexPage';
 import { LegalPage } from 'pages/LegalPage';
 import { PrivacyPage } from 'pages/PrivacyPage';
 import { Report } from 'pages/Report';
-import { IRoute, IRoutesCollection } from 'types';
+import { IRoute, TRoutesCollection } from 'types';
 
 const messages = defineMessages({
   main: {
@@ -26,7 +26,9 @@ const messages = defineMessages({
   },
 });
 
-export const routes: IRoutesCollection<IRoute> = {
+type RouteKeys = 'main' | 'hiw' | 'analysis' | 'report' | 'legal' | 'privacy';
+
+export const routes: TRoutesCollection<RouteKeys, IRoute> = {
   main: {
     path: '/',
     exact: true,
