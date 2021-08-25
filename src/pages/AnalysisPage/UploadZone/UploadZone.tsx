@@ -6,6 +6,7 @@ import { DragNDropField } from '@consta/uikit/DragNDropField';
 import { File } from '@consta/uikit/File';
 import { IconTrash } from '@consta/uikit/IconTrash';
 import { Text } from '@consta/uikit/Text';
+import { IErrors } from 'pages/AnalysisPage/types';
 
 import './Attach.css';
 import styles from './UploadZone.module.css';
@@ -31,33 +32,34 @@ const fileSizeToMb = (size: number) => {
 
 interface IProps {
   files: File[];
+  errors: IErrors;
   uploadProgress: number;
-  onUpload: (file: File) => void;
+  onUpload: (file: File) => Promise<void>;
   onDeleteFile: (fileName: string) => void;
   uploadLimit: number;
 }
 
 export const UploadZone: React.FC<IProps> = ({
   files,
+  errors,
   uploadProgress = 0,
   uploadLimit,
   onUpload,
   onDeleteFile,
 }) => {
   const { formatMessage } = useIntl();
-
   const fileSize = useMemo(() => uploadLimit * 1024 * 1024, [uploadLimit]);
+
+  const onDropFiles = (files: File[]) => {
+    const file = files[0];
+    file && onUpload(file);
+  };
 
   return (
     <div className={styles.root}>
       {!files.length && (
         <div className={styles.DndZone}>
-          <DragNDropField
-            onDropFiles={(files) => {
-              files[0] && onUpload(files[0]);
-            }}
-            maxSize={fileSize}
-          >
+          <DragNDropField onDropFiles={onDropFiles} maxSize={fileSize}>
             {({ openFileDialog }) => (
               <>
                 <Text>{formatMessage(messages.description)}</Text>
@@ -79,6 +81,7 @@ export const UploadZone: React.FC<IProps> = ({
           fileExtension={file.name.match(/\.(?!.*\.)(\w*)/)?.[1]}
           fileDescription={`${fileSizeToMb(file.size)} Мб`}
           loadingProgress={uploadProgress}
+          errorText={errors[file.name]}
           buttonIcon={IconTrash}
           buttonTitle={formatMessage(messages.buttonDelete)}
           onClick={() => onDeleteFile(file.name)}

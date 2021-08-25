@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: row;
   position: relative;
-  flex: 1;
+  flex-basis: 40%;
 }
 
 .TitleContainer {

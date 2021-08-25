@@ -3,6 +3,7 @@ import { defineMessages, useIntl } from 'react-intl';
 import { useQuery } from '@apollo/client';
 import { Button } from '@consta/uikit/Button';
 import { IconDownload } from '@consta/uikit/IconDownload';
+import { Loader } from '@consta/uikit/Loader';
 import { Pagination } from '@consta/uikit/Pagination';
 import { Table } from '@consta/uikit/Table';
 import { Text } from '@consta/uikit/Text';
@@ -106,19 +107,24 @@ export const Report: React.FC = () => {
         <Text weight={'bold'}>{formatMessage(messages.subtitle)}</Text>
         <Button label={formatMessage(messages.downloadButton)} iconLeft={IconDownload} />
       </div>
-      <Table<ITableRow>
-        columns={columns}
-        rows={visibleRows}
-        borderBetweenRows
-        stickyHeader
-      />
-      <Pagination
-        form="brick"
-        currentPage={currentPage}
-        onChange={handleChange}
-        totalPages={totalPages}
-        hotkeys={hotKeys}
-      />
+      {!loading && <Loader />}
+      {loading && (
+        <>
+          <Table<ITableRow>
+            columns={columns}
+            rows={visibleRows}
+            borderBetweenRows
+            stickyHeader
+          />
+          <Pagination
+            form="brick"
+            currentPage={currentPage}
+            onChange={handleChange}
+            totalPages={totalPages}
+            hotkeys={hotKeys}
+          />
+        </>
+      )}
     </Page>
   );
 };

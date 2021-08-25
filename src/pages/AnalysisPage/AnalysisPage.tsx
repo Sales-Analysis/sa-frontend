@@ -1,8 +1,10 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import { defineMessages, useIntl } from 'react-intl';
+import { File } from '@consta/uikit/File';
 import { Text } from '@consta/uikit/Text';
 import { useFileUpload } from 'hooks/useFileUpload';
 import { NavButtons } from 'pages/AnalysisPage/NavButtons';
+import { IErrors } from 'pages/AnalysisPage/types';
 import { Page } from 'components/Page';
 import { FirstStep } from './FirstStep';
 import { SecondStep } from './SecondStep';
@@ -21,24 +23,38 @@ const UPLOAD_LIMIT = Number(process.env.REACT_APP_UPLOAD_FILESIZE) || 100;
 
 export const AnalysisPage: React.FC = () => {
   const [files, setFiles] = React.useState<File[]>([]);
-  const [upload, progress] = useFileUpload();
+  const [errors, setErrors] = useState<IErrors>({});
+  const { upload, progress } = useFileUpload();
   const { formatMessage } = useIntl();
+
+  const onCatchError = (error: Error, file: File) => {
+    setFiles([file]);
+    setErrors((prevState) => ({
+      ...prevState,
+      [file.name]: error.message,
+    }));
+  };
 
   const onDeleteFile = (fileName: string) => {
     setFiles((prevState) => prevState.filter(({ name }) => name !== fileName));
+    setErrors({});
   };
 
   const onFileUpload = useCallback(
     (file: File) => {
-      upload(file).then((res) => {
-        console.log(res);
-      });
+      return upload(file)
+        .then((res) => {
+          setFiles([file]);
+        })
+        .catch((err) => onCatchError(err, file));
     },
     [upload]
   );
 
+  const canCalculate = !!files.length && !errors.length;
+
   return (
-    <Page bottomComponent={<NavButtons canCalculate={true} />}>
+    <Page bottomComponent={<NavButtons canCalculate={canCalculate} />}>
       <div className={styles.root}>
         <Text size={'4xl'} weight={'bold'}>
           {formatMessage(messages.title)}
@@ -46,6 +62,7 @@ export const AnalysisPage: React.FC = () => {
         <FirstStep uploadLimit={UPLOAD_LIMIT}>
           <UploadZone
             files={files}
+            errors={errors}
             uploadProgress={progress}
             onUpload={onFileUpload}
             onDeleteFile={onDeleteFile}

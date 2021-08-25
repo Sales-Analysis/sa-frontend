@@ -48,7 +48,7 @@ export const Widget = React.memo<IProps>(function Widget({
         {!disabled && <StartAnalysisButton />}
       </div>
       <div className={styles.ImageContainer}>
-        <img className={styles.Image} src={img} alt="widget" />
+        <img className={styles.Image} src={`/${img}`} alt="widget" />
       </div>
     </div>
   );
