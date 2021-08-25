@@ -1,4 +1,4 @@
-import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client';
 import { SchemaLink } from '@apollo/client/link/schema';
 import { addMocksToSchema } from '@graphql-tools/mock';
 import { mocks, resolvers } from 'apollo/mocks';
@@ -13,7 +13,6 @@ const schemaWithMocks = addMocksToSchema({
 });
 
 export const client = new ApolloClient({
-  uri: '/api',
-  link: new SchemaLink({ schema: schemaWithMocks }),
+  link: 1 ? new HttpLink({ uri: '/api' }) : new SchemaLink({ schema: schemaWithMocks }),
   cache,
 });

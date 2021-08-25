@@ -4,12 +4,13 @@ module.exports = function (app) {
   app.use(
     '/api',
     createProxyMiddleware({
-      target: process.env.REACT_APP_BACKEND_API,
+      target: process.env.REACT_APP_BACKEND,
+      pathRewrite: { '^/api': '/graphql' },
       changeOrigin: true,
     })
   );
   app.use(
-    '/upload',
+    ['/upload'],
     createProxyMiddleware({
       target: process.env.REACT_APP_BACKEND,
       changeOrigin: true,
