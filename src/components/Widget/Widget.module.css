@@ -6,7 +6,8 @@
   display: flex;
   flex-direction: row;
   position: relative;
-  flex-basis: 40%;
+  flex: 1;
+  max-width: 50%;
 }
 
 .TitleContainer {
@@ -14,6 +15,10 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
+
+.Description {
+  min-width: 300px;
 }
 
 .Content {

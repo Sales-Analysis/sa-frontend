@@ -44,7 +44,9 @@ export const Widget = React.memo<IProps>(function Widget({
             />
           )}
         </div>
-        <Text view={'secondary'}>{description}</Text>
+        <Text view={'secondary'} className={styles.Description}>
+          {description}
+        </Text>
         {!disabled && <StartAnalysisButton />}
       </div>
       <div className={styles.ImageContainer}>

@@ -26,8 +26,6 @@ export const IndexPage = React.memo(function IndexPage() {
   const { formatMessage } = useIntl();
   const { data } = useQuery<TQuery>(getIndexPageContentQuery);
 
-  console.log(data);
-
   return (
     <div className={styles.root}>
       <Description />

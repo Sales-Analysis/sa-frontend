@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import { Providers } from 'providers/Providers';
 import { routes } from 'routes';
 import { Footer } from 'components/Footer';
@@ -17,6 +17,7 @@ export const App: React.FC = () => {
             {component}
           </Route>
         ))}
+        <Route render={() => <Redirect to={{ pathname: '/' }} />} />
       </Switch>
       <Footer />
     </Providers>
