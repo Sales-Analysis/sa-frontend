@@ -12,6 +12,23 @@ type Analysis {
   name: String!
 }
 
+type AnalysisOption {
+  id: ID!
+  selected: Boolean!
+  title: String!
+}
+
+type AnalysisSelect {
+  id: ID!
+  options: [AnalysisOption!]!
+  order: Int!
+  title: String!
+}
+
+type AnalysisSettings {
+  selects: [AnalysisSelect!]!
+}
+
 type FAQ {
   description: String!
   id: Int!
@@ -29,4 +46,9 @@ type Query {
   ListAnalysis: [Analysis!]!
   ListFAQ: [FAQ!]!
   ListHIW: [HIW!]!
+  getAnalysisSettings(analysisType: AnalysisType): [AnalysisSelect!]!
+}
+
+enum AnalysisType {
+  ABC
 }

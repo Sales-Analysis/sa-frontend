@@ -1,4 +1,5 @@
 import { IMockStore } from '@graphql-tools/mock/types';
+import { IResolvers } from '@graphql-tools/utils';
 import faker from 'faker';
 import { TAnalysis, TFaq, TRow } from 'types/structures';
 
@@ -28,7 +29,9 @@ export const mocks = {
   }),
 };
 
-export const resolvers = (store: IMockStore) => ({
+export const resolvers: IResolvers | ((store: IMockStore) => IResolvers) = (
+  store: IMockStore
+) => ({
   Query: {
     getReports: () => Array.from(Array(100), () => store.get('Row')),
   },
