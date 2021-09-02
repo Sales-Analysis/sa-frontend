@@ -1,0 +1,13 @@
+.root {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.Describe {
+  padding-top: 10%;
+}
+
+.Order {
+  color: rgb(37, 132, 255);
+}

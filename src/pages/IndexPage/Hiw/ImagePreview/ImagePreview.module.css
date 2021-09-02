@@ -1,0 +1,11 @@
+.root {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  max-width: 50%;
+  padding: var(--space-xl);
+}
+
+.Image {
+  width: 100%;
+}
